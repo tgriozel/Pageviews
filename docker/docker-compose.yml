@@ -1,0 +1,19 @@
+version: "2.1"
+
+services:
+  pageviews:
+    image: pageviews:1.0.0
+    links:
+      - influxdb
+    ports:
+      - "9000:9000"
+
+  influxdb:
+    image: influxdb:latest
+    ports:
+      - "8086:8086"
+    healthcheck:
+      test: "curl -f http://localhost:8086/ping"
+      interval: 10s
+      timeout: 10s
+      retries: 3

@@ -1,0 +1,10 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+GET    /v1/ping         controllers.ApplicationController.ping
+
+POST   /v1/page         controllers.PageviewsStatsController.recordPageview
+
+GET    /v1/user/:userId controllers.PageviewsStatsController.getUserStats(userId: String, daysCount: Int ?= 7)
